@@ -1,0 +1,25 @@
+@startuml
+title Целевые Компоненты Микросервиса Телеметрии Устройства Пользователя Системы Управления Умным Домом
+
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Component.puml
+
+Container(ApiGateway, "Api Gateway")
+
+Container(UserDeviceCommunicationService, "User Device Telemetry Service"){
+	Component(UserDeviceTelemetryController, "UserDeviceTelemetryController", "Presents a user's devices telemetries")
+	Component(ServiceLayer, "ServiceLayer", "Business logic")
+	Component(RepositoryLayer, "RepositoryLayer", "User Device Telemetry data access logic")
+}
+
+ContainerQueue(MessageBroker, "MessageBroker/MessageQueue", "Kafka/RabbitMQ", "Stores actions over devices or them telemetry", $tags="webApp")
+Rel_D(ApiGateway, UserDeviceTelemetryController, "Handle a request to get a device telemetry")
+
+Rel_D(UserDeviceTelemetryController, ServiceLayer, "Calls business logic")
+Rel_D(ServiceLayer, RepositoryLayer, "Sub")
+Rel_U(MessageBroker, RepositoryLayer, "Subscribed at a topic in the queue events")
+
+SHOW_FLOATING_LEGEND()
+
+@enduml
+
+ 

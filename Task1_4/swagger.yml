@@ -1,0 +1,540 @@
+openapi: 3.0.3
+info:
+  title: Smart Home Control System
+  version: "0.0.1"
+servers:
+  - url: http://localhost:8080/api/v1/
+    description: Dev server
+paths:
+  /device:
+    post:
+      tags:
+        - Device
+      security:
+        - bearerAuth: [ ]
+      summary: the new device creation function
+      operationId: deviceCreate
+      requestBody:
+        required: true
+        description: create the new device
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/DeviceNew"
+      responses:
+        200:
+          description: ok
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Device"
+        401:
+          description: Authentication error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        default:
+          description: Unexpected case
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+  /device/{deviceId}:
+    get:
+      tags:
+        - Device
+      summary : the method to get the specific device data
+      operationId: deviceGetById
+      parameters:
+        - $ref: '#/components/parameters/deviceId'
+      security:
+        - bearerAuth: [ ]
+      responses :
+        200:
+          description: ok
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Device"
+        401:
+          description: Authentication error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        default:
+          description: Unexpected case
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+    delete:
+      tags:
+        - Device
+      summary: the method to delete the specific device
+      operationId: deleteDevice
+      parameters:
+        - $ref: '#/components/parameters/deviceId'
+      security:
+        - bearerAuth: [ ]
+      responses:
+        200:
+          description: ok
+          content:
+            application/json: {}
+        401:
+          description: Authentication error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        default:
+          description: Unexpected case
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+  /user/device:
+    post:
+      tags:
+        - User Device
+      security:
+        - bearerAuth: [ ]
+      summary: link the device with the user
+      operationId: userDeviceLinkCreate
+      requestBody:
+        required: true
+        description: deviceId to link with the user
+        content:
+          application/json:
+            schema:
+              type: integer
+              description: the deviceId
+      responses:
+        200:
+          description: ok
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/UserDevice"
+        401:
+          description: Authentication error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        default:
+          description: Unexpected case
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+    
+  /user/device/{userDeviceId}:
+    delete:
+      tags:
+        - User Device
+      summary: the method to delete the specific device
+      operationId: userDeviceLinkDelete
+      parameters:
+        - $ref: '#/components/parameters/userDeviceId'
+      security:
+        - bearerAuth: [ ]
+      responses:
+        200:
+          description: ok
+          content:
+            application/json: {}
+        401:
+          description: Authentication error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        default:
+          description: Unexpected case
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+  /user/device/{userDeviceId}/action:
+    post:
+      tags:
+        - User Device
+      summary: do an action over the user's device
+      operationId: userDeviceAction
+      parameters:
+        - $ref: '#/components/parameters/userDeviceId'
+      security:
+        - bearerAuth: [ ]
+      requestBody:
+        description: Action parameters
+        content:
+          application/json: {}
+      responses:
+        200:
+          description: ok
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/UserDeviceAction"
+        401:
+          description: Authentication error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        default:
+          description: Unexpected case
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+  /user/device/{userDeviceId}/telemetry:
+    get:
+      tags:
+        - User Device
+      summary : the method to get array of the user's device telemetries
+      operationId: userDeviceTelemetries
+      parameters:
+        - $ref: '#/components/parameters/userDeviceId'
+      security:
+        - bearerAuth: [ ]
+      responses :
+        200:
+          description: ok
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/DeviceTelemetries"
+        401:
+          description: Authentication error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        default:
+          description: Unexpected case
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+  /user/device/{userDeviceId}/telemetry/latest:
+    get:
+      tags:
+        - User Device
+      summary : the method to get the latest user's device telemetry
+      operationId: userDeviceTelemetryLatest
+      parameters:
+        - $ref: '#/components/parameters/userDeviceId'
+      security:
+        - bearerAuth: [ ]
+      responses :
+        200:
+          description: ok
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/DeviceTelemetry"
+        401:
+          description: Authentication error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        default:
+          description: Unexpected case
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+  /user/devices:
+    get:
+      tags:
+        - User Devices
+      summary : the method to get array of user's devices
+      operationId: userDeviceLinks
+      security:
+        - bearerAuth: [ ]
+      responses :
+        200:
+          description: ok
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/UserDevices"
+        401:
+          description: Authentication error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        default:
+          description: Unexpected case
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+  /devices/info/categories:
+    get:
+      tags:
+        - Devices Categories Info
+      summary: the summary info method to get an array categories of devices
+      operationId: devicesCategoriesGetInfo
+      security:
+        - bearerAuth: [ ]
+      responses:
+        200:
+          description: ok
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/DevicesCategoriesInfo"
+        401:
+          description: Authentication error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        default:
+          description: Unexpected case
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+  /devices/info/{categoryId}:
+    get:
+      tags:
+        - Devices Info
+      summary : the method to get array of devices related to the category
+      operationId: devicesGetByCategory
+      parameters:
+        - name: categoryId
+          in: path
+          required: true
+          description: the category Id
+          schema:
+            type: string
+      security:
+        - bearerAuth: [ ]
+      responses :
+        200:
+          description: ok
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/DevicesInfos"
+        401:
+          description: Authentication error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        default:
+          description: Unexpected case
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+   
+components:
+  schemas:
+    DeviceCategoryInfo:
+      type: object
+      required: 
+        - id
+        - Name
+      properties:
+        id:
+          type: integer
+          description: the category id
+          example: 1234
+        Name:
+          type: string
+          description: the category name
+          example: Switches
+
+    DevicesCategoriesInfo:
+      type: array
+      description: array of devices categies infos
+      items:
+        $ref: "#/components/schemas/DeviceCategoryInfo"
+
+    DeviceInfo:
+      type: object
+      required: 
+        - id
+        - Name
+      properties:
+        id:
+          type: integer
+          description: the device id
+          example: 1234
+        Name:
+          type: string
+          description: the device name
+          example: Legrand switch
+    DevicesInfos:
+      type: array
+      description: array of devices infos
+      items:
+        $ref: "#/components/schemas/DeviceInfo"
+    
+    DeviceNew:
+      type: object
+      required: 
+        - Name
+      properties:
+        Name:
+          type: string
+          description: the device name
+          example: Legrand switch
+
+    Device:
+      type: object
+      required: 
+        - id
+        - Name
+      properties:
+        id:
+          type: integer
+          description: the device id
+          example: 1234
+        Name:
+          type: string
+          description: the device name
+          example: Legrand switch
+    UserDevice:
+      type: object
+      required: 
+        - userId
+        - deviceId
+        - userDeviceId
+      properties:
+        userId:
+          type: string
+          format: uuid
+          description: the user id
+          example: 00821e94-1b2d-483f-994e-9f91cf3d18eb
+        deviceId:
+          type: integer
+          description: the device id
+          example: 1234
+        userDeviceId:
+          type: integer
+          description: the unique user's device id
+          example: 1
+    UserDevices:
+      type: array
+      description: array of user devices
+      items:
+        $ref: "#/components/schemas/UserDevice"
+    UserDeviceAction:
+      type: object
+      required:
+        - actionId
+        - actionValueType
+      properties:
+        actionId:
+          type: integer
+          description: the action Id
+          example: 1
+        actionValueType:
+          type: string
+          enum:
+            - string
+            - integer
+            - number
+          example: integer
+        actionValueInt:
+          type: integer
+        actionValueString:
+          type: string
+        actionValueNumber:
+          type: number
+
+    Error:
+      type: object
+      required:
+        - code
+        - message
+      properties:
+        code: 
+          type: integer
+          description: the error code
+          example: 500
+        message: 
+          type: string
+          description: the error message
+          example: Vasya goes to lunch without him the service is unavailable.
+    
+    DeviceTelemetry:
+      type: object
+      description: the user device telemetry
+      properties:
+        id:
+          type: integer
+          example: 321
+        device_id:
+          type: integer
+          example: 1234
+        valueType:
+          type: string
+          description: the device telemetry type
+          enum: 
+            - status
+            - heat
+            - temperature
+        value:
+          type: number
+          description: the device telemetry value
+          example: "1"
+        createdDateTime:
+          type: string
+          description: a device telemetry modify date and time
+          example: 2024-01-01T00:00:00+03
+    DeviceTelemetries:
+      type: array
+      description: the array of user device telemetries
+      items:
+        $ref: "#/components/schemas/DeviceTelemetry"
+
+  parameters:
+    deviceId:
+      name: deviceId
+      in: path
+      required: true
+      description: the device id
+      schema:
+        type: integer
+      example: 1234
+    userId:
+      name: userId
+      in: path
+      required: true
+      description: the user id
+      schema:
+        type: string
+        format: uuid
+      example: 1234
+    userDeviceId:
+      name: userDeviceId
+      in: path
+      required: true
+      description: the id of linked device with the user
+      schema:
+        type: integer
+      example: 1234
+
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+
+security:
+  - bearerAuth: []

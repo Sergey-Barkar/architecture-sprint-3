@@ -1,0 +1,21 @@
+@startuml
+title Контекст Системы отопления умного дома
+
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Context.puml
+
+!define FONTAWESOME https://raw.githubusercontent.com/tupadr3/plantuml-icon-font-sprites/master/font-awesome-5
+!include FONTAWESOME/users.puml
+
+Person(User, "Пользователь", "Пользователь системы", $sprite="users")
+Person(Specialict, "Специалист", "Специалист по подключению систем отопления")
+System(SmarthomeMonolith, "Система отопления умного дома", "Позволяет контролировать температуру")
+
+System_Ext(DevicesService, "Устройства", "Предоставляет API для устройства отопления")
+
+Rel(SmarthomeMonolith, DevicesService, "Осуществляет упрвление и мониторинг температур систем отопления")
+Rel(User, SmarthomeMonolith, "Управляет и просматривает температуру")
+Rel(Specialict, SmarthomeMonolith, "Регистрирует системы отопления")
+
+SHOW_LEGEND()
+
+@enduml

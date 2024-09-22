@@ -1,0 +1,134 @@
+@startuml
+
+entity Device 
+{
+  * Id : int64
+  --
+  * Name : nvarchar
+}
+entity DeviceCategory
+{
+	* Id : int64
+	--
+	* Name : nvarchar
+	--
+    * CommunicationProtocolId : int64
+	AutomatizationTemplateGroupId : int64
+	SupportedTelemetryTypes : int64 
+}
+entity DeviceCategoryLink
+{
+    * RecId : int64
+	--
+	* DeviceId : int64
+	* DeviceCategoryId : int64
+}
+entity CommunicationProtocol
+{
+	* RecId : int64
+	--
+	* Type : smallint
+	--
+}
+entity DeviceAutomatizationTemplate
+{
+	* Id : int64
+	--
+	* Name : nvarchar
+	* Type : smallint
+}
+entity DeviceAutomatizationTemplateGroup
+{
+	* RecId : int64
+	--
+	description : nvarchar
+}
+entity DeviceAutomatizationTemplateGroupLink
+{
+	* RecId : int64
+	--
+	* TemplateId : int64
+	* TemplateGroupId : int64
+}
+entity User 
+{
+  * Id : GUID
+  --
+  email : varchar
+}
+entity UserDeviceLink 
+{
+  * RecId : int64
+  --
+  * userId : GUID
+  * deviceId : int64
+}
+entity UserDeviceServiceData
+{
+	*linkRecId : int64
+	--
+	* MACAddress : char(12)
+	* communicationProtocolId : int64
+}
+entity UserDeviceAutomatization
+{
+	* Id : int64
+	--
+	* UserDeviceLinkRecId : int64
+	--
+	* name : nvarchar
+}
+
+entity UserDeviceAutomatizationQueue
+{
+	* AutomatizationId : int64
+	--
+	* AutomatizationTemplateId : int64
+	* Priority : tinyint
+}
+entity UserDeviceAutomatizationBatch
+{
+	* RecId : int64
+	--
+	* AutomatizationId : int64
+	--
+	* status : tinyint
+	* createdDateTime : dateTime
+	* planedExecutionDateTime : dateTime
+	* factExecutionDateTime : dateTime
+}
+
+UserDeviceLink --o{ UserDeviceAutomatization : "link between user's device and automatization"
+UserDeviceAutomatization --o| UserDeviceAutomatizationBatch : "periodic operations over a device"
+UserDeviceAutomatization --o{ UserDeviceAutomatizationQueue : "automatization action queues by specific scenarios"
+DeviceAutomatizationTemplate --o{ UserDeviceAutomatizationQueue : "specification of an automatization action"
+
+DeviceAutomatizationTemplateGroup --o{ DeviceCategory : "available automatizations to a device category"
+DeviceAutomatizationTemplate --o{ DeviceAutomatizationTemplateGroupLink : "link between templates and groups"
+DeviceAutomatizationTemplateGroup --o{ DeviceAutomatizationTemplateGroupLink : "link between templates and groups"
+Device --|{ DeviceCategoryLink : "linked devices to a catogory"
+DeviceCategory --|{ DeviceCategoryLink : "linked categories to a device"
+CommunicationProtocol --o| DeviceCategory : "the way to communication with a device"
+User --o{ UserDeviceLink : "link between users and theses devices"
+UserDeviceLink }o-- Device : "link between users and theses devices"
+
+
+UserDeviceServiceData }o-- CommunicationProtocol : "a user's device communication protocol"
+UserDeviceServiceData ||-- UserDeviceLink : "a user's device service data"
+
+@enduml
+
+
+
+	
+	
+Zero or One 	|o--
+Exactly One 	||--
+Zero or Many 	}o--
+One or Many 	}|--
+
+UserRole }o-- User : "user's devices"
+Role ||--o{ UserRole : "is assigned to users"
+Role ||--o{ RolePermission : "has permissions"
+Permission ||--o{ RolePermission : "is assigned to roles"
+User ||--o{ AuditLog : "performs actions"

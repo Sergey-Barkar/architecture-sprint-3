@@ -1,0 +1,101 @@
+@startuml
+title Целевые Контейнеры Системы Управления Умным Домом
+
+!includeurl https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Container.puml
+
+!define DEVICONS https://raw.githubusercontent.com/tupadr3/plantuml-icon-font-sprites/master/devicons
+!define FONTAWESOME https://raw.githubusercontent.com/tupadr3/plantuml-icon-font-sprites/master/font-awesome
+!define FONTAWESOME5 https://raw.githubusercontent.com/tupadr3/plantuml-icon-font-sprites/master/font-awesome-5
+
+!include DEVICONS/angular.puml
+!include DEVICONS/postgresql.puml
+!include DEVICONS/msql_server.puml
+!include FONTAWESOME5/users.puml
+!include FONTAWESOME/mobile_phone.puml
+
+!define osaPuml https://raw.githubusercontent.com/Crashedmind/PlantUML-opensecurityarchitecture2-icons/master
+!include osaPuml/Common.puml
+!include osaPuml/User/all.puml
+
+!include <office/Servers/database_server>
+!include <office/Servers/file_server>
+!include <office/Servers/application_server>
+
+AddContainerTag("webApp", $sprite="application_server", $legendText="web app container")
+AddContainerTag("mobileApp", $sprite="mobile_phone", $legendText="mobile app container")
+
+Person(User, "Пользователь", "Пользователь системы", $sprite="users")
+Person(Admin, "Администратор", "Администратор системы", $sprite="users")
+
+System_Ext(MobileAppStore, "MobileOS") {
+	Container(Mobile_app, "Mobile Application", "C#, .Net, WebView2 Api", "GUI wrap above web application", $tags="mobileApp")
+}
+
+System_Boundary(SmartHomeControlSystem, "Система Управления Умным домом") {
+    Container(Web_app, "Web Application", "C#, ASP.NET Core", "Frontend service", $tags="webApp")
+	Container(WebAdmin_app, "Web Administration Application", "Any kind of programm language", "Administration Frontend service", $tags="webApp")
+	Container(ApiGateway, "Api Gateway", "Kong/Kusk", "The router of requests", $tags="webApp")
+	ContainerDb(ApiGateway_db, "Database", "PostgreSQL", "Api Gateway data storage", $sprite="postgresql")
+	
+	Container(SDService, "Supported Devices Service", "Any kind of programm language", "Contains data about allowed devices to use", $tags="webApp")
+	ContainerDb(SDService_db, "Database", "PostgreSQL", "Holds information about supported deveces in smart house control system", $sprite="postgresql")
+	
+	Container(UserService, "User Service", "IAM service", "Controls user acces", $tags="webApp")
+	ContainerDb(UserService_db, "Database", "PostgreSQL", "IAM service data storage", $sprite="postgresql")
+	
+	Container(UserDeviceService, "User Device Service", "Any kind of programm language", "Presents possibility to manage list of smart home user devices", $tags="webApp")
+	ContainerDb(UserDeviceService_db, "Database", "PostgreSQL", "Holds information about registered devices", $sprite="postgresql")
+	
+	Container(UserAutomatizationService, "User Automatization Service", "Any kind of programm language", "Allows to setup devices queue of actions", $tags="webApp")
+	ContainerDb(UserAutomatizationService_db, "Database", "PostgreSQL", "Holds information about user's setuped actions", $sprite="postgresql")
+	
+	Container(DeviceAutomatizationTemplateService, "Device Automatization Template Service", "Any kind of programm language", "Manage templates of actions available to use per supported device", $tags="webApp")
+	ContainerDb(DeviceAutomatizationTemplateService_db, "Database", "PostgreSQL", "Holds templates of actions available to use per supported device", $sprite="postgresql")
+	
+	ContainerQueue(Kafka, "MessageBroker/MessageQueue", "Kafka/RabbitMQ", "Stores(or pushes in the case with Kafka) information about actions over devices", $tags="webApp")
+
+	Container(UserDeviceCommunicationService, "User Device Communication Service", "Any kind of programm language", "Responsible for communication between system and devices", $tags="webApp")
+	Container(UserDeviceTelemetryService, "User Device Telemetry Service", "Any kind of programm language", "Presents a device's telemetries", $tags="webApp")
+}
+
+System_Ext(SmartHomeDevices, "Устройства умного дома", "Предоставляет API для взаимодействия")
+
+Rel_D(Web_app, ApiGateway, "Uses", "HTTPS")
+Rel_D(WebAdmin_app, ApiGateway, "Uses", "HTTPS")
+Rel_D(ApiGateway, ApiGateway_db, "CRUD into DB")
+
+Rel_L(ApiGateway, SDService, "Uses", "RestApi")
+Rel_D(ApiGateway, UserService, "Uses", "RestApi")
+Rel_D(ApiGateway, UserDeviceService, "Uses", "RestApi")
+Rel_D(ApiGateway, DeviceAutomatizationTemplateService, "Uses", "RestApi")
+Rel_D(ApiGateway, UserAutomatizationService, "Uses", "RestApi")
+Rel_R(ApiGateway, UserDeviceCommunicationService, "Uses")
+Rel_R(ApiGateway, UserDeviceTelemetryService, "Uses")
+Rel_D(SmartHomeDevices, ApiGateway, "Uses", "HTTPS")
+
+Rel_D(UserService, UserService_db, "CRUD into DB")
+Rel_D(UserDeviceService, UserDeviceService_db, "CRUD into DB")
+Rel_D(DeviceAutomatizationTemplateService, DeviceAutomatizationTemplateService_db, "CRUD into DB")
+Rel_D(UserAutomatizationService, UserAutomatizationService_db, "CRUD into DB")
+Rel_L(SDService, SDService_db, "CRUD into DB")
+
+Rel_R(UserAutomatizationService, Kafka, "Uses")
+Rel_D(UserDeviceCommunicationService, Kafka, "Uses")
+Rel_D(UserDeviceTelemetryService, Kafka, "Uses")
+
+
+Rel_D(User, Mobile_app, "")
+Rel_D(User, Web_app, "Uses", "HTTPS")
+Rel_D(Admin, WebAdmin_app, "Uses", "HTTPS")
+Rel_L(Mobile_app, Web_app, "Uses", "HTTPS")
+
+Lay_Distance(Web_app, ApiGateway, 1)
+Lay_Distance(WebAdmin_app, ApiGateway, 1)
+Lay_Distance(SmartHomeDevices, ApiGateway, 1)
+Lay_Distance(ApiGateway, ApiGateway_db, 0)
+
+SHOW_FLOATING_LEGEND()
+Lay_Distance(LEGEND(), SmartHomeControlSystem, 1) 
+
+@enduml
+

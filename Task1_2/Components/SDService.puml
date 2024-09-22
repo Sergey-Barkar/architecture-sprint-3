@@ -1,0 +1,27 @@
+@startuml
+title Целевые Компоненты Микросервиса Поддерживаемых Устройств Системы Управления Умным Домом
+
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Component.puml
+
+!define DEVICONS https://raw.githubusercontent.com/tupadr3/plantuml-icon-font-sprites/master/devicons
+
+!include DEVICONS/postgresql.puml
+
+Container(SDService, "Supported Devices Service"){
+	Component(DeviceController, "DeviceController", "Manages supported devices")
+	Component(DeviceRegistrationController, "DeviceRegistrationController", "Handles device registration")
+	Component(ServiceLayer, "ServiceLayer", "Business logic")
+	Component(RepositoryLayer, "RepositoryLayer", "Handles requests to devices data storage")
+}
+
+ContainerDb(UserService_db, "Database", "PostgreSQL", "Device data storage", $sprite="postgresql")
+	
+Rel_D(DeviceController, ServiceLayer, "Calls business logic")
+Rel_D(DeviceRegistrationController, ServiceLayer, "Calls business logic")
+Rel_D(ServiceLayer, RepositoryLayer, "CRU")
+Rel_D(RepositoryLayer, UserService_db, "CRU")
+
+SHOW_FLOATING_LEGEND()
+
+@enduml
+

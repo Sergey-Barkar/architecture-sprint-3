@@ -1,0 +1,35 @@
+@startuml
+title Целевые Компоненты Микросервиса Автоматизаций Пользовательких Устройство Системы Управления Умным Домом
+
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Component.puml
+
+!define DEVICONS https://raw.githubusercontent.com/tupadr3/plantuml-icon-font-sprites/master/devicons
+
+!include DEVICONS/postgresql.puml
+
+Container(DeviceAutomatizationTemplateService, "Device Automatization Template Service")
+Container(UserDeviceService, "User Device Service")
+
+Container(UserAutomatizationService, "User Automatization Service"){
+	Component(UserAutomatizationQueueController, "UserAutomatizationQueueController", "Manages user's automatization for devices")
+	Component(UserAutomatizationCreationController, "UserAutomatizationCreationController", "Allow to edit user's automatization")
+	Component(ServiceLayer, "ServiceLayer", "Business logic")
+	Component(RepositoryLayer, "RepositoryLayer", "User Automatization data access logic")
+}
+
+ContainerQueue(MessageBroker, "MessageBroker/MessageQueue", "Kafka/RabbitMQ", "Stores information about actions over devices", $tags="webApp")
+ContainerDb(db, "Database", "PostgreSQL", "Stores user automatization data", $sprite="postgresql")
+Rel_U(UserAutomatizationCreationController, DeviceAutomatizationTemplateService, "Requests available automatizations for user's devices")
+Rel_U(UserAutomatizationCreationController, UserDeviceService, "Receives user's devices")
+	
+Rel_D(UserAutomatizationQueueController, ServiceLayer, "Calls business logic")
+Rel_D(UserAutomatizationCreationController, ServiceLayer, "Calls business logic")
+Rel_D(ServiceLayer, RepositoryLayer, "CRUD")
+Rel_D(RepositoryLayer, db, "CRUD")
+Rel_D(RepositoryLayer, MessageBroker, "Publishes an action queue events")
+Rel_D(MessageBroker, RepositoryLayer, "Subscribed at results of devices communication to handle by setuped action queue")
+
+SHOW_FLOATING_LEGEND()
+
+@enduml
+

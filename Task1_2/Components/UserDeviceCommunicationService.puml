@@ -1,0 +1,27 @@
+@startuml
+title Целевые Компоненты Микросервиса Коммуникации с конечными устройствами Системы Управления Умным Домом
+
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Component.puml
+
+Container(ApiGateway, "Api Gateway")
+
+Container(UserDeviceCommunicationService, "User Device Communication Service"){
+	Component(UserDeviceCommunicationController, "UserAutomatizationController", "Manages user's automatization for devices")
+	Component(ServiceLayer, "ServiceLayer", "Business logic")
+	Component(RepositoryLayer, "RepositoryLayer", "User Automatization data access logic")
+}
+
+ContainerQueue(MessageBroker, "MessageBroker/MessageQueue", "Kafka/RabbitMQ", "Stores actions over devices or them telemetry", $tags="webApp")
+Rel_D(ApiGateway, UserDeviceCommunicationController, "Handle a request to a device")
+Rel_U(UserDeviceCommunicationController, ApiGateway, "Communicate with a device because of a input request from gateway or a message broker event")
+
+Rel_D(UserDeviceCommunicationController, ServiceLayer, "Calls business logic")
+Rel_D(ServiceLayer, RepositoryLayer, "Pub/Sub")
+Rel_D(RepositoryLayer, MessageBroker, "Publishes communications results")
+Rel_D(RepositoryLayer, MessageBroker, "Subscribed at an action queue events")
+
+SHOW_FLOATING_LEGEND()
+
+@enduml
+
+ 
