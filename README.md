@@ -1,74 +1,73 @@
-# Базовая настройка
+# Smart Home Control System
 
-## Запуск minikube
+# Задание 1.1
+Текущее монолитное решение представляет собой веб сервис написанный на Java. <br/>
+Данный сервис позволяет осуществлять управлять отопительными устройствами по их идентификатору. Идентификация пользователя при управлении устройством не осуществляется, это говорит о том, что существует возможность контроля чужих устройств. <br/>
+В качестве хранилища данных использует реляционная база данных - PostgreSQL.<br/>
+Диаграмма контекста C4 (все последующие изображения диаграмм содержат гиперссылки на plantUML-файл):<br/>
+<p href="Task1_1/context.puml" align="center">
+  <img src="Task1_1/context.png" alt="PlantUML" />
+</p><br/>
 
-[Инструкция по установке](https://minikube.sigs.k8s.io/docs/start/)
+# Задание 1.2
+## Диаграмма контейнеров
+### Диаграмма целевой архитектуры решения на уровне контейнеров
+В качестве способа коммуникации между сервисами используется хореография (только потому, что в рамках предыдущих спринтов использовал оркестрацию).
+<p href="Task1_2/Containers/containers.puml" align="center">
+  <img src="Task1_2/Containers/containers.png" alt="PlantUML" />
+</p><br/>
 
-```bash
-minikube start
-```
+## Диаграммы компонентов
+### Диаграмма целевого состояния компонента ApiGateway
+Вся коммуникация с внешним миром осуществляется исключительно через данный сервис.<br/>
+<p href="Task1_2/Components/ApiGateway.puml" align="center">
+  <img src="Task1_2/Components/ApiGateway.png" alt="PlantUML" width="80%" height="80%"/>
+</p><br/>
 
+### Диаграмма целевого состояния компонента SupportedDeviceService
+Сервис содержит в себе поддерживаемые устройства.<br/>
+<p align="center" href="Task1_2/Components/SDService.puml" >
+  <img src="Task1_2/Components/SDService.png" alt="PlantUML" width="40%" height="40%"/>
+</p><br/>
 
-## Добавление токена авторизации GitHub
+### Диаграмма целевого состояния компонента DeviceAutomatizationTemplateService:
+Сервис доступных автоматизаций/действий в рамках категорий поддерживаемых устройств.<br/>
+<p href="Task1_2/Components/DeviceAutomatizationTemplateService.puml" align="center">
+  <img src="Task1_2/Components/DeviceAutomatizationTemplateService.png" alt="PlantUML" width="40%" height="40%"/>
+</p><br/>
 
-[Получение токена](https://github.com/settings/tokens/new)
+### Диаграмма целевого состояния компонента UserService:
+Сервис аутентификации и авторизации пользователей.<br/>
+<p href="Task1_2/Components/UserService.puml" align="center">
+  <img src="Task1_2/Components/UserService.png" alt="PlantUML" width="40%" height="40%"/>
+</p><br/>
 
-```bash
-kubectl create secret docker-registry ghcr --docker-server=https://ghcr.io --docker-username=<github_username> --docker-password=<github_token> -n default
-```
+### Диаграмма целевого состояния компонента UserDeviceService:
+Сервис поддерживаемых системой зарегистрированных устройств пользователя.<br/>
+<p href="Task1_2/Components/UserDeviceService.puml" align="center">
+  <img src="Task1_2/Components/UserDeviceService.png" alt="PlantUML" width="40%" height="40%"/>
+</p><br/>
 
+### Диаграмма целевого состояния компонента UserDeviceTelemetryService:
+Сервис телеметрии устройств пользовтаелей.<br/>
+<p href="Task1_2/Components/UserDeviceTelemetryService.puml" align="center">
+  <img src="Task1_2/Components/UserDeviceTelemetryService.png" alt="PlantUML" width="40%" height="40%"/>
+</p><br/>
 
-## Установка API GW kusk
+### Диаграмма целевого состояния компонента UserAutomatizationService:
+Сервис автоматизации событий (автоматических сценариев) настроенных пользователем, соответствующих допустимым для устройств.<br/>
+<p href="Task1_2/Components/UserAutomatizationService.puml" align="center">
+  <img src="Task1_2/Components/UserAutomatizationService.png" alt="PlantUML" width="40%" height="40%"/>
+</p><br/>
 
-[Install Kusk CLI](https://docs.kusk.io/getting-started/install-kusk-cli)
+### Диаграмма целевого состояния компонента UserCommunicationService:
+Сервис коммуникации системы с конечными устройствами.<br/>
+<p href="Task1_2/Components/UserDeviceCommunicationService.puml" align="center">
+  <img src="Task1_2/Components/UserDeviceCommunicationService.png" alt="PlantUML" width="40%" height="40%"/>
+</p><br/>
 
-```bash
-kusk cluster install
-```
-
-
-## Настройка terraform
-
-[Установите Terraform](https://yandex.cloud/ru/docs/tutorials/infrastructure-management/terraform-quickstart#install-terraform)
-
-
-Создайте файл ~/.terraformrc
-
-```hcl
-provider_installation {
-  network_mirror {
-    url = "https://terraform-mirror.yandexcloud.net/"
-    include = ["registry.terraform.io/*/*"]
-  }
-  direct {
-    exclude = ["registry.terraform.io/*/*"]
-  }
-}
-```
-
-## Применяем terraform конфигурацию 
-
-```bash
-cd terraform
-terraform apply
-```
-
-## Настройка API GW
-
-```bash
-kusk deploy -i api.yaml
-```
-
-## Проверяем работоспособность
-
-```bash
-kubectl port-forward svc/kusk-gateway-envoy-fleet -n kusk-system 8080:80
-curl localhost:8080/hello
-```
-
-
-## Delete minikube
-
-```bash
-minikube delete
-```
+## Диаграмма кода
+### Диаграмма целевого кода сервиса коммуникации
+<p href="Task1_2/Code/UserDeviceCommunicationService.puml" align="center">
+  <img src="Task1_2/Code/UserDeviceCommunicationService.png" alt="PlantUML" width="40%" height="40%"/>
+</p><br/>
