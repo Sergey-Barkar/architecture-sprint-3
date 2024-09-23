@@ -68,6 +68,7 @@
 
 ## Диаграмма кода
 ### Диаграмма целевого кода сервиса коммуникации
-<p href="Task1_2/Code/UserDeviceCommunicationService.puml" align="center">
-  <img src="Task1_2/Code/UserDeviceCommunicationService.png" alt="PlantUML" width="40%" height="40%"/>
+Весь трафик во вне проходит через Apigateway.
+<p href="Task1_2/Code/DeviceCommunicationService.puml" align="center">
+  <img src="Task1_2/Code/DeviceCommunicationService.png" alt="PlantUML" width="100%" height="100%"/>
 </p><br/>
