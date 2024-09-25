@@ -88,8 +88,9 @@ ER диаграмма<br/>
 Ссылка на Swagger: <a href="Task1_4/swagger.yml">Task1_4/swagger.yml</a>.<br/>
 
 <h1>Задание 2.1</h1><br/>
-Деплой осуществляется командой 
+Деплой осуществляется командами: 
 
+    cd smart-home-services
     docker compose up -d
 Сервисы требуют аутентификации, за это отвечает keycloak. 
 Их работоспособность можно проверить через swagger.
