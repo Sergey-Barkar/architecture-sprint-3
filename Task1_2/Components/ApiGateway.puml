@@ -1,0 +1,27 @@
+@startuml
+title Целевые Компоненты Api Gateway Для Устройств Системы Управления Умным Домом
+
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Component.puml
+
+System_Ext(SmartHomeDevices, "Устройства умного дома", "Предоставляет API для взаимодействия")
+
+Container(Web_app, "Web Application", "Frontend service")
+Container(WebAdmin_app, "Web Administration Application", "Administration Frontend service")
+Container(AMicroService, "A Microservice")
+
+
+Container(ApiGateway, "Api Gateway"){
+}
+
+Rel_U(ApiGateway, WebAdmin_app, "Makes Post/Get requests")
+Rel_U(ApiGateway, Web_app, "Makes Post/Get requests")
+Rel_U(ApiGateway, SmartHomeDevices, "Get or set data by abble to device protocol")
+Rel_D(ApiGateway, AMicroService, "Routering requests between microservices")
+
+
+
+SHOW_FLOATING_LEGEND()
+
+@enduml
+
+ 

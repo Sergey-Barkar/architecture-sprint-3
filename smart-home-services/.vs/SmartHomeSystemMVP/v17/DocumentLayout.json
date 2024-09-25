@@ -1,0 +1,251 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\Imper\\Downloads\\aspnetcore-server-generated\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{3C899611-0A1A-425D-9811-4D83EBB3FD59}|src\\userdevicetelemetry\\userdevicetelemetry.csproj|c:\\users\\imper\\downloads\\aspnetcore-server-generated\\src\\userdevicetelemetry\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{3C899611-0A1A-425D-9811-4D83EBB3FD59}|src\\userdevicetelemetry\\userdevicetelemetry.csproj|solutionrelative:src\\userdevicetelemetry\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3C899611-0A1A-425D-9811-4D83EBB3FD59}|src\\userdevicetelemetry\\userdevicetelemetry.csproj|c:\\users\\imper\\downloads\\aspnetcore-server-generated\\src\\userdevicetelemetry\\kafka\\consumer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3C899611-0A1A-425D-9811-4D83EBB3FD59}|src\\userdevicetelemetry\\userdevicetelemetry.csproj|solutionrelative:src\\userdevicetelemetry\\kafka\\consumer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EC801552-898F-44FF-BEB1-21870C4A96FF}|src\\userdevice\\userdevice.csproj|c:\\users\\imper\\downloads\\aspnetcore-server-generated\\src\\userdevice\\kafka\\producer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EC801552-898F-44FF-BEB1-21870C4A96FF}|src\\userdevice\\userdevice.csproj|solutionrelative:src\\userdevice\\kafka\\producer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EC801552-898F-44FF-BEB1-21870C4A96FF}|src\\userdevice\\userdevice.csproj|c:\\users\\imper\\downloads\\aspnetcore-server-generated\\src\\userdevice\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{EC801552-898F-44FF-BEB1-21870C4A96FF}|src\\userdevice\\userdevice.csproj|solutionrelative:src\\userdevice\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EC801552-898F-44FF-BEB1-21870C4A96FF}|src\\userdevice\\userdevice.csproj|c:\\users\\imper\\downloads\\aspnetcore-server-generated\\src\\userdevice\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EC801552-898F-44FF-BEB1-21870C4A96FF}|src\\userdevice\\userdevice.csproj|solutionrelative:src\\userdevice\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EC801552-898F-44FF-BEB1-21870C4A96FF}|src\\userdevice\\userdevice.csproj|c:\\users\\imper\\downloads\\aspnetcore-server-generated\\src\\userdevice\\controllers\\userdeviceapi.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EC801552-898F-44FF-BEB1-21870C4A96FF}|src\\userdevice\\userdevice.csproj|solutionrelative:src\\userdevice\\controllers\\userdeviceapi.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EC801552-898F-44FF-BEB1-21870C4A96FF}|src\\userdevice\\userdevice.csproj|c:\\users\\imper\\downloads\\aspnetcore-server-generated\\src\\userdevice\\kafka\\consumer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EC801552-898F-44FF-BEB1-21870C4A96FF}|src\\userdevice\\userdevice.csproj|solutionrelative:src\\userdevice\\kafka\\consumer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3C899611-0A1A-425D-9811-4D83EBB3FD59}|src\\userdevicetelemetry\\userdevicetelemetry.csproj|c:\\users\\imper\\downloads\\aspnetcore-server-generated\\src\\userdevicetelemetry\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3C899611-0A1A-425D-9811-4D83EBB3FD59}|src\\userdevicetelemetry\\userdevicetelemetry.csproj|solutionrelative:src\\userdevicetelemetry\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3C899611-0A1A-425D-9811-4D83EBB3FD59}|src\\userdevicetelemetry\\userdevicetelemetry.csproj|c:\\users\\imper\\downloads\\aspnetcore-server-generated\\src\\userdevicetelemetry\\models\\userdevicetelemetries.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3C899611-0A1A-425D-9811-4D83EBB3FD59}|src\\userdevicetelemetry\\userdevicetelemetry.csproj|solutionrelative:src\\userdevicetelemetry\\models\\userdevicetelemetries.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3C899611-0A1A-425D-9811-4D83EBB3FD59}|src\\userdevicetelemetry\\userdevicetelemetry.csproj|c:\\users\\imper\\downloads\\aspnetcore-server-generated\\src\\userdevicetelemetry\\models\\userdevicetelemetry.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3C899611-0A1A-425D-9811-4D83EBB3FD59}|src\\userdevicetelemetry\\userdevicetelemetry.csproj|solutionrelative:src\\userdevicetelemetry\\models\\userdevicetelemetry.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3C899611-0A1A-425D-9811-4D83EBB3FD59}|src\\userdevicetelemetry\\userdevicetelemetry.csproj|c:\\users\\imper\\downloads\\aspnetcore-server-generated\\src\\userdevicetelemetry\\controllers\\userdevicetelemetryapi.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3C899611-0A1A-425D-9811-4D83EBB3FD59}|src\\userdevicetelemetry\\userdevicetelemetry.csproj|solutionrelative:src\\userdevicetelemetry\\controllers\\userdevicetelemetryapi.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EC801552-898F-44FF-BEB1-21870C4A96FF}|src\\userdevice\\userdevice.csproj|c:\\users\\imper\\downloads\\aspnetcore-server-generated\\src\\userdevice\\controllers\\userdevicesapi.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EC801552-898F-44FF-BEB1-21870C4A96FF}|src\\userdevice\\userdevice.csproj|solutionrelative:src\\userdevice\\controllers\\userdevicesapi.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EC801552-898F-44FF-BEB1-21870C4A96FF}|src\\userdevice\\userdevice.csproj|c:\\users\\imper\\downloads\\aspnetcore-server-generated\\src\\userdevice\\dockerfile||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{EC801552-898F-44FF-BEB1-21870C4A96FF}|src\\userdevice\\userdevice.csproj|solutionrelative:src\\userdevice\\dockerfile||{8B382828-6202-11D1-8870-0000F87579D2}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 16,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:129:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:130:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:131:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:5:0:{809f6ff3-8092-454a-8003-6d4091f9b5bb}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{99b8fa2f-ab90-4f57-9c32-949f146f1914}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "UserDeviceTelemetries.cs",
+              "DocumentMoniker": "C:\\Users\\Imper\\Downloads\\aspnetcore-server-generated\\src\\userdevicetelemetry\\Models\\UserDeviceTelemetries.cs",
+              "RelativeDocumentMoniker": "src\\userdevicetelemetry\\Models\\UserDeviceTelemetries.cs",
+              "ToolTip": "C:\\Users\\Imper\\Downloads\\aspnetcore-server-generated\\src\\userdevicetelemetry\\Models\\UserDeviceTelemetries.cs",
+              "RelativeToolTip": "src\\userdevicetelemetry\\Models\\UserDeviceTelemetries.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-24T08:52:55.59Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "UserDeviceApi.cs",
+              "DocumentMoniker": "C:\\Users\\Imper\\Downloads\\aspnetcore-server-generated\\src\\userdevice\\Controllers\\UserDeviceApi.cs",
+              "RelativeDocumentMoniker": "src\\userdevice\\Controllers\\UserDeviceApi.cs",
+              "ToolTip": "C:\\Users\\Imper\\Downloads\\aspnetcore-server-generated\\src\\userdevice\\Controllers\\UserDeviceApi.cs",
+              "RelativeToolTip": "src\\userdevice\\Controllers\\UserDeviceApi.cs",
+              "ViewState": "AQIAAAMAAAAAAAAAAAAmwBoAAABdAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-24T08:26:57.099Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "UserDevicesApi.cs",
+              "DocumentMoniker": "C:\\Users\\Imper\\Downloads\\aspnetcore-server-generated\\src\\userdevice\\Controllers\\UserDevicesApi.cs",
+              "RelativeDocumentMoniker": "src\\userdevice\\Controllers\\UserDevicesApi.cs",
+              "ToolTip": "C:\\Users\\Imper\\Downloads\\aspnetcore-server-generated\\src\\userdevice\\Controllers\\UserDevicesApi.cs",
+              "RelativeToolTip": "src\\userdevice\\Controllers\\UserDevicesApi.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-24T08:26:53.754Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Producer.cs",
+              "DocumentMoniker": "C:\\Users\\Imper\\Downloads\\aspnetcore-server-generated\\src\\userdevice\\Kafka\\Producer.cs",
+              "RelativeDocumentMoniker": "src\\userdevice\\Kafka\\Producer.cs",
+              "ToolTip": "C:\\Users\\Imper\\Downloads\\aspnetcore-server-generated\\src\\userdevice\\Kafka\\Producer.cs",
+              "RelativeToolTip": "src\\userdevice\\Kafka\\Producer.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAB8AAAAEAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-24T06:43:02.57Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Consumer.cs",
+              "DocumentMoniker": "C:\\Users\\Imper\\Downloads\\aspnetcore-server-generated\\src\\userdevice\\Kafka\\Consumer.cs",
+              "RelativeDocumentMoniker": "src\\userdevice\\Kafka\\Consumer.cs",
+              "ToolTip": "C:\\Users\\Imper\\Downloads\\aspnetcore-server-generated\\src\\userdevice\\Kafka\\Consumer.cs",
+              "RelativeToolTip": "src\\userdevice\\Kafka\\Consumer.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA4AAAA2AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-24T06:47:11.755Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "UserDeviceTelemetryApi.cs",
+              "DocumentMoniker": "C:\\Users\\Imper\\Downloads\\aspnetcore-server-generated\\src\\userdevicetelemetry\\Controllers\\UserDeviceTelemetryApi.cs",
+              "RelativeDocumentMoniker": "src\\userdevicetelemetry\\Controllers\\UserDeviceTelemetryApi.cs",
+              "ToolTip": "C:\\Users\\Imper\\Downloads\\aspnetcore-server-generated\\src\\userdevicetelemetry\\Controllers\\UserDeviceTelemetryApi.cs",
+              "RelativeToolTip": "src\\userdevicetelemetry\\Controllers\\UserDeviceTelemetryApi.cs",
+              "ViewState": "AQIAACEAAAAAAAAAAAAuwD0AAABrAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-24T06:04:59.796Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "UserDeviceTelemetry.cs",
+              "DocumentMoniker": "C:\\Users\\Imper\\Downloads\\aspnetcore-server-generated\\src\\userdevicetelemetry\\Models\\UserDeviceTelemetry.cs",
+              "RelativeDocumentMoniker": "src\\userdevicetelemetry\\Models\\UserDeviceTelemetry.cs",
+              "ToolTip": "C:\\Users\\Imper\\Downloads\\aspnetcore-server-generated\\src\\userdevicetelemetry\\Models\\UserDeviceTelemetry.cs",
+              "RelativeToolTip": "src\\userdevicetelemetry\\Models\\UserDeviceTelemetry.cs",
+              "ViewState": "AQIAAC8AAAAAAAAAAAAmwEAAAAAeAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-24T05:51:08.018Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Consumer.cs",
+              "DocumentMoniker": "C:\\Users\\Imper\\Downloads\\aspnetcore-server-generated\\src\\userdevicetelemetry\\Kafka\\Consumer.cs",
+              "RelativeDocumentMoniker": "src\\userdevicetelemetry\\Kafka\\Consumer.cs",
+              "ToolTip": "C:\\Users\\Imper\\Downloads\\aspnetcore-server-generated\\src\\userdevicetelemetry\\Kafka\\Consumer.cs",
+              "RelativeToolTip": "src\\userdevicetelemetry\\Kafka\\Consumer.cs",
+              "ViewState": "AQIAAAsAAAAAAAAAAAAgwB0AAAAJAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-24T05:42:33.496Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\Imper\\Downloads\\aspnetcore-server-generated\\src\\userdevice\\Program.cs",
+              "RelativeDocumentMoniker": "src\\userdevice\\Program.cs",
+              "ToolTip": "C:\\Users\\Imper\\Downloads\\aspnetcore-server-generated\\src\\userdevice\\Program.cs",
+              "RelativeToolTip": "src\\userdevice\\Program.cs",
+              "ViewState": "AQIAAAUAAAAAAAAAAAAswAwAAAAuAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-23T08:57:55.971Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\Imper\\Downloads\\aspnetcore-server-generated\\src\\userdevicetelemetry\\Program.cs",
+              "RelativeDocumentMoniker": "src\\userdevicetelemetry\\Program.cs",
+              "ToolTip": "C:\\Users\\Imper\\Downloads\\aspnetcore-server-generated\\src\\userdevicetelemetry\\Program.cs",
+              "RelativeToolTip": "src\\userdevicetelemetry\\Program.cs",
+              "ViewState": "AQIAAAMAAAAAAAAAAAAWwBMAAAAMAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-23T08:57:49.394Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\Users\\Imper\\Downloads\\aspnetcore-server-generated\\src\\userdevice\\appsettings.json",
+              "RelativeDocumentMoniker": "src\\userdevice\\appsettings.json",
+              "ToolTip": "C:\\Users\\Imper\\Downloads\\aspnetcore-server-generated\\src\\userdevice\\appsettings.json",
+              "RelativeToolTip": "src\\userdevice\\appsettings.json",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAB0AAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2024-09-23T08:24:28.877Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\Users\\Imper\\Downloads\\aspnetcore-server-generated\\src\\userdevicetelemetry\\appsettings.json",
+              "RelativeDocumentMoniker": "src\\userdevicetelemetry\\appsettings.json",
+              "ToolTip": "C:\\Users\\Imper\\Downloads\\aspnetcore-server-generated\\src\\userdevicetelemetry\\appsettings.json",
+              "RelativeToolTip": "src\\userdevicetelemetry\\appsettings.json",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAAAzAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2024-09-23T08:24:21.469Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "Dockerfile",
+              "DocumentMoniker": "C:\\Users\\Imper\\Downloads\\aspnetcore-server-generated\\src\\userdevice\\Dockerfile",
+              "RelativeDocumentMoniker": "src\\userdevice\\Dockerfile",
+              "ToolTip": "C:\\Users\\Imper\\Downloads\\aspnetcore-server-generated\\src\\userdevice\\Dockerfile",
+              "RelativeToolTip": "src\\userdevice\\Dockerfile",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAABKAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2024-09-22T22:46:03.125Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

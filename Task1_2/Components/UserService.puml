@@ -1,0 +1,27 @@
+@startuml
+title Целевые Компоненты Пользовательского Микросервиса Системы Управления Умным Домом
+
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Component.puml
+
+!define DEVICONS https://raw.githubusercontent.com/tupadr3/plantuml-icon-font-sprites/master/devicons
+
+!include DEVICONS/postgresql.puml
+
+Container(UserService, "User Service"){
+	Component(UserController, "UserController", "Manages user profile")
+	Component(UserAuthentificationController, "UserAuthentificationController", "Handles authentication and authorozation")
+	Component(ServiceLayer, "ServiceLayer", "Business logic")
+	Component(Keycloak, "Keycloak", "Responsible for user's authentication")
+}
+
+ContainerDb(UserService_db, "Database", "PostgreSQL", "Stores user data", $sprite="postgresql")
+	
+Rel_D(UserController, ServiceLayer, "Calls business logic")
+Rel_D(UserAuthentificationController, ServiceLayer, "Calls business logic")
+Rel_D(ServiceLayer, Keycloak, "CRU")
+Rel_D(Keycloak, UserService_db, "CRU")
+
+SHOW_FLOATING_LEGEND()
+
+@enduml
+

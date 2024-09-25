@@ -1,0 +1,30 @@
+@startuml
+title Целевые Компоненты Микросервиса Шаблонов Поддерживаемых Действий Для Устройств Системы Управления Умным Домом
+
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Component.puml
+
+!define DEVICONS https://raw.githubusercontent.com/tupadr3/plantuml-icon-font-sprites/master/devicons
+
+!include DEVICONS/postgresql.puml
+
+Container(SDService, "Supported Devices Service")
+
+Container(DeviceAutomatizationTemplateService, "DeviceAutomatizationTemplateService"){
+	Component(DeviceAutomatizationTemplateController, "DeviceAutomatizationTemplateController", "Manages available automatization for devices")
+	Component(DeviceAutomatizationTemplateCreationController, "DeviceAutomatizationTemplateCreationController", "Allow to edit device automatization")
+	Component(ServiceLayer, "ServiceLayer", "Business logic")
+	Component(RepositoryLayer, "RepositoryLayer", "Automatization data access logic")
+}
+
+ContainerDb(db, "Database", "PostgreSQL", "Stores automatization data", $sprite="postgresql")
+Rel_U(DeviceAutomatizationTemplateCreationController, SDService, "Requests supported devices")
+	
+Rel_D(DeviceAutomatizationTemplateController, ServiceLayer, "Calls business logic")
+Rel_D(DeviceAutomatizationTemplateCreationController, ServiceLayer, "Calls business logic")
+Rel_D(ServiceLayer, RepositoryLayer, "CRUD")
+Rel_D(RepositoryLayer, db, "CRUD")
+
+SHOW_FLOATING_LEGEND()
+
+@enduml
+
